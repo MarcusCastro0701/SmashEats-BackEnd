@@ -1,17 +1,12 @@
-import app, { init } from '@/app';
-import redis from '@/config/databaseCache';
 import httpStatus from 'http-status';
 import supertest from 'supertest';
+import app, { init } from '@/app';
 import { createEvent } from '../factories';
 import { cleanDb } from '../helpers';
 
 beforeAll(async () => {
   await init();
   await cleanDb();
-});
-
-beforeEach(async () => {
-  await redis.flushDb();
 });
 
 const server = supertest(app);

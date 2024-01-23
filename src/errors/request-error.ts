@@ -1,11 +1,11 @@
-import { RequestError } from "@/protocols";
+import { RequestError } from '@/protocols';
 
 export function requestError(status: number, statusText: string): RequestError {
   return {
-    name: "RequestError",
+    name: 'RequestError',
     data: null,
     status,
     statusText,
-    message: "There is a problem with this requisition!",
+    message: 'There is a problem with this requisition!',
   };
 }

@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 import { ObjectSchema } from 'joi';
-import { invalidDataError } from '@/errors';
 
 function validate(schema: ObjectSchema, type: 'body' | 'params') {
   return (req: Request, res: Response, next: NextFunction) => {
@@ -12,7 +11,7 @@ function validate(schema: ObjectSchema, type: 'body' | 'params') {
     if (!error) {
       next();
     } else {
-      res.status(httpStatus.BAD_REQUEST).send(invalidDataError(error.details.map(d => d.message)));
+      res.status(httpStatus.BAD_REQUEST).send(error.details.map(d => d.message));
     }
   };
 }
