@@ -5,7 +5,7 @@ import 'reflect-metadata';
 
 import { connectDb, disconnectDB, loadEnv } from '@/config';
 
-import { categoriesRouter } from '@/routers';
+import { categoriesRouter, ordersRouter, productsRouter } from '@/routers';
 
 loadEnv();
 
@@ -14,7 +14,9 @@ app
   .use(cors())
   .use(express.json())
   .get('/health', (_req, res) => res.send('OK!'))
-  .use('/categories', categoriesRouter);
+  .use('/categories', categoriesRouter)
+  .use('/products', productsRouter)
+  .use('/orders', ordersRouter);
 
 export function init(): Promise<Express> {
   connectDb();

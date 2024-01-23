@@ -17,6 +17,7 @@ CREATE TABLE "products" (
     "price" VARCHAR(255) NOT NULL,
     "ImageUrl" VARCHAR(255) NOT NULL,
     "description" TEXT NOT NULL,
+    "isExtra" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -41,8 +42,10 @@ CREATE TABLE "event" (
 CREATE TABLE "orders" (
     "id" SERIAL NOT NULL,
     "productId" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "observations" TEXT NOT NULL,
     "clientName" TEXT NOT NULL,
-    "ready" BOOLEAN NOT NULL,
+    "ready" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
 );

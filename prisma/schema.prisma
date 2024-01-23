@@ -24,8 +24,10 @@ model products {
   price     String   @db.VarChar(255)
   ImageUrl       String   @db.VarChar(255)
   description   String
+  isExtra   Boolean   @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  
 
   orders     orders[]
 
@@ -45,9 +47,11 @@ model event {
 
 model orders {
   id     Int      @id @default(autoincrement())
-  productId   Int   
+  productId   Int 
+  quantity Int  
+  observations  String
   clientName   String
-  ready  Boolean
+  ready  Boolean  @default(false)
 
   products         products?           @relation(fields: [productId], references: [id])
 }

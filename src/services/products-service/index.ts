@@ -10,6 +10,6 @@ async function findAllProducts() {
   return response;
 }
 
-export const categoriesService = {
+export const productsService = {
   findAllProducts,
 };
