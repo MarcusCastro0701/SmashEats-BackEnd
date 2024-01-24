@@ -26,7 +26,7 @@ async function orderSet(orderId: number) {
 
 async function deleteOrder(orderId: number) {
   const findById = await ordersRepository.findOrderById(orderId);
-  if (!findById) {
+  if (findById === null) {
     throw notFoundError();
   }
 

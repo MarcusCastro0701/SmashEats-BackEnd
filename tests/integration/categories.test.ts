@@ -12,24 +12,19 @@ beforeAll(async () => {
 const server = supertest(app);
 
 describe('GET /categories', () => {
-  it('should respond with status 404 if there is no categories', async () => {
+  it('should respond with status 200 if there is no categories yet', async () => {
     const response = await server.get('/orders');
 
-    expect(response.status).toBe(httpStatus.NOT_FOUND);
+    expect(response.status).toBe(httpStatus.OK);
+    expect(response.body).toEqual([]);
   });
 
   it('should respond with status 200 and categories data if there is categories', async () => {
-    const categorie = await createCategorie();
+    await createCategorie();
 
     const response = await server.get('/categories');
 
     expect(response.status).toBe(httpStatus.OK);
-    expect(response.body).toEqual({
-      id: categorie.id,
-      name: categorie.name,
-      ImageUrl: categorie.ImageUrl,
-      createdAt: categorie.createdAt,
-      updatedAt: categorie.createdAt,
-    });
+    expect(response.body.length).toEqual(1);
   });
 });

@@ -1,6 +1,5 @@
 import faker from '@faker-js/faker';
 import { products } from '@prisma/client';
-import dayjs from 'dayjs';
 import { prisma } from '@/config';
 
 export async function createProduct(params: Partial<products> = {}): Promise<products> {
@@ -14,8 +13,6 @@ export async function createProduct(params: Partial<products> = {}): Promise<pro
       ImageUrl: params.ImageUrl || faker.image.imageUrl(),
       description: params.description || faker.lorem.sentence(5),
       isExtra: params.isExtra || false,
-      createdAt: params.createdAt || dayjs().subtract(1, 'day').toDate(),
-      updatedAt: params.updatedAt || dayjs().add(5, 'days').toDate(),
     },
   });
 }

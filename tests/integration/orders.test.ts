@@ -9,22 +9,30 @@ beforeAll(async () => {
   await cleanDb();
 });
 
+beforeEach(async () => {
+  await init();
+  await cleanDb();
+});
+
 const server = supertest(app);
 
 describe('GET /orders', () => {
-  it('should respond with status 404 if there is no orders', async () => {
+  it('should respond with status 200 if there yet', async () => {
     const response = await server.get('/orders');
 
-    expect(response.status).toBe(httpStatus.NOT_FOUND);
+    expect(response.status).toBe(httpStatus.OK);
+    expect(response.body).toEqual([]);
   });
 
   it('should respond with status 200 and orders data if there is orders', async () => {
+    await createCategorie();
+    await createProduct();
     const order = await createOrder();
 
     const response = await server.get('/orders');
 
     expect(response.status).toBe(httpStatus.OK);
-    expect(response.body).toEqual({
+    expect(response.body[0]).toEqual({
       id: order.id,
       productId: order.productId,
       quantity: order.quantity,
@@ -60,7 +68,7 @@ describe('post /orders', () => {
     const response = await server.get('/orders').send(body);
 
     expect(response.status).toBe(httpStatus.OK);
-    expect(response.body).toEqual({
+    expect(response.body[0]).toEqual({
       id: order.id,
       productId: order.productId,
       quantity: order.quantity,

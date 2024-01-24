@@ -79,6 +79,9 @@ export async function deleteFromOrders(req: Request, res: Response) {
     if (error.status === 404) {
       return res.status(httpStatus.NOT_FOUND).send(error);
     }
+    if (error.name === 'NotFoundError') {
+      return res.status(httpStatus.NOT_FOUND).send(error);
+    }
     if (error.status === 400) {
       return res.status(httpStatus.BAD_REQUEST).send(error);
     }
