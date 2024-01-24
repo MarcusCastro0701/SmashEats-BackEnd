@@ -1,50 +1,57 @@
-# rodrimar-backend
+# desafio-Devio-FrontEnd
 
-Back-end for Devio Full-Stack challenge.
+## Sobre
 
-## About
+O desafio consiste na elaboração de um sistema de pedidos para um restaurante de lanches. 
 
-It's an app for managing orders at an establishment that specializes in snacks.
+Todo o layout foi desenvolvido pensando em uma aplicação responsiva e que se aplique em um contexto prático. Através da integração com o banco de dados, foram inseridos produtos, os quai são adicionados ao pedido. A tela de pagamento processa o pedido, fornece métodos de pagamento, o troco (cado o cliente escolha dinheiro), o nome do cliente, o código do pedido e um resumo do pedido. A tela da cozinha controla os pedidos que estão sendo feitos e os que já estão prontos. A tela da retirada fornece os nomes dos clientes que fizeram pedidos, separando-os em lanches prontos para a retirada ou não. 
 
-## Finding printer data
+Separei cos componentes partindo do App.js. De lá, cada tela possui uma Home (os dashboars de orders e payments estao em um únio endereço). Da home, parte para o dashboard de cada tela, seguido de seus componentes, renderizados individualmente, o aque torna a aplicação mais legível.
 
- Follow the .env.example located at the source.
+Obtive novos conhecimentos lidando com libs que eu não conhecia e, ao final do projeto, valeu apena todo o esforço, pois obtive mais experiência com a elaboração de projetos e estipulação de tempo para a realização de tarefas. 
 
- For WINDOWS:
+Dediquei todo o meu tempo disponível desde o lançamento do desafio (17/01/2024)
 
- Connect your USB printer to your computer. 
-
- Open "Device Manager" by right-clicking on the Windows icon in the bottom left corner and selecting "Device Manager" from the menu.
-
- In Device Manager, find the category "Human Interface Devices" or "Ports (COM and LPT)."
-
- Locate your printer in the list. It may be listed as a printer or as a human interface device or even under "Ports (COM and LPT)."
-
- Right-click on the printer and select "Properties."
-
- Go to the "Details" tab, and from the dropdown menu, select "Hardware IDs."
-
- You will see two lines called "VID_" (vendor ID) and "PID_" (product ID). Note down these values.
-
- With these values in hand, you can replace 'vendorId' and 'productId' in the .env file with the correct values.
-
-VENDOR_ID=your_vendor_id
-PRODUCT_ID=your_product_id
+IMPORTANTE: Para habilitar a impressão térmica, descomente a parte que está comentada no componente "PaymentMethod.js"
 
 
-------
+## Como achar os dados da impressora
 
+ Siga o arquivo .env.example localizado na origem.
 
- For LINUX or MACOS:
+Para WINDOWS:
 
- Connect your printer and type the following command in the terminal: lsusb
+Conecte sua impressora USB ao seu computador.
 
- This command will list all USB devices connected to your system, including the printer.
+Abra o "Gerenciador de Dispositivos" clicando com o botão direito no ícone do Windows no canto inferior esquerdo e selecionando "Gerenciador de Dispositivos" no menu.
 
- You can look for the line corresponding to your printer to find the "vendor ID" and "product ID."
+No Gerenciador de Dispositivos, encontre a categoria "Dispositivos de Interface Humana" ou "Portas (COM e LPT)."
 
-VENDOR_ID=your_vendor_id
-PRODUCT_ID=your_product_id
+Localize sua impressora na lista. Pode estar listada como uma impressora, dispositivo de interface humana ou até mesmo em "Portas (COM e LPT)."
+
+Clique com o botão direito na impressora e selecione "Propriedades."
+
+Vá para a guia "Detalhes" e, no menu suspenso, selecione "IDs de hardware."
+
+Você verá duas linhas chamadas "VID_" (ID do fornecedor) e "PID_" (ID do produto). Anote esses valores.
+
+Com esses valores em mãos, você pode substituir 'vendorId' e 'productId' no arquivo .env pelos valores corretos.
+
+VENDOR_ID=seu_id_do_fornecedor
+PRODUCT_ID=seu_id_do_produto
+
+----------------------------------------
+
+Para LINUX ou MACOS:
+
+Conecte sua impressora e digite o seguinte comando no terminal: lsusb
+
+Este comando listará todos os dispositivos USB conectados ao seu sistema, incluindo a impressora.
+
+Procure a linha correspondente à sua impressora para encontrar o "ID do fornecedor" e o "ID do produto."
+
+VENDOR_ID=seu_id_do_fornecedor
+PRODUCT_ID=seu_id_do_produto
 
 
 
