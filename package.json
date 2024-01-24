@@ -2,7 +2,7 @@
   "name": "nodeapp",
   "version": "1.0.0",
   "engines": {
-    "node": "9.5.1"
+    "node": "18.16.1"
   },
   "description": "",
   "main": "dist/index.js",
