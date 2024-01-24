@@ -4,15 +4,11 @@
 
 O desafio consiste na elaboração de um sistema de pedidos para um restaurante de lanches. 
 
-Todo o layout foi desenvolvido pensando em uma aplicação responsiva e que se aplique em um contexto prático. Através da integração com o banco de dados, foram inseridos produtos, os quai são adicionados ao pedido. A tela de pagamento processa o pedido, fornece métodos de pagamento, o troco (cado o cliente escolha dinheiro), o nome do cliente, o código do pedido e um resumo do pedido. A tela da cozinha controla os pedidos que estão sendo feitos e os que já estão prontos. A tela da retirada fornece os nomes dos clientes que fizeram pedidos, separando-os em lanches prontos para a retirada ou não. 
+Toda a arquitetuda do back-end do projeto foi elaborada visando facilitar a navegação entre arquivos e pastas, facilitando a localização do desenvolvedor que estiver trabalhando no projeto. O projeto se inicia no app.ts, dentro de src. A partir daí, o projeto é dividido em camadas, baseando-se na estrutura Routers => Controllers => Services => Repository. Essa estrutura proporciona um fluxo de dados mais controlado. 
 
-Separei cos componentes partindo do App.js. De lá, cada tela possui uma Home (os dashboars de orders e payments estao em um únio endereço). Da home, parte para o dashboard de cada tela, seguido de seus componentes, renderizados individualmente, o aque torna a aplicação mais legível.
-
-Obtive novos conhecimentos lidando com libs que eu não conhecia e, ao final do projeto, valeu apena todo o esforço, pois obtive mais experiência com a elaboração de projetos e estipulação de tempo para a realização de tarefas. 
+Utilizei o Postgres como banco de dados, e elaborei o mapeamento do meu banco buscando garantir uma relção interligada entre as tabelas. 
 
 Dediquei todo o meu tempo disponível desde o lançamento do desafio (17/01/2024)
-
-IMPORTANTE: Para habilitar a impressão térmica, descomente a parte que está comentada no componente "PaymentMethod.js"
 
 
 ## Como achar os dados da impressora
