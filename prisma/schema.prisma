@@ -51,6 +51,7 @@ model orders {
   quantity Int  
   observations  String
   clientName   String
+  code   Int
   ready  Boolean  @default(false)
 
   products         products?           @relation(fields: [productId], references: [id])

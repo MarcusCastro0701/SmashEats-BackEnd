@@ -45,6 +45,7 @@ CREATE TABLE "orders" (
     "quantity" INTEGER NOT NULL,
     "observations" TEXT NOT NULL,
     "clientName" TEXT NOT NULL,
+    "code" INTEGER NOT NULL,
     "ready" BOOLEAN NOT NULL DEFAULT false,
 
     CONSTRAINT "orders_pkey" PRIMARY KEY ("id")

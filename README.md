@@ -1,12 +1,52 @@
 # rodrimar-backend
 
-Back-end for Driven.t, an event management solution.
-
-:)
+Back-end for Devio Full-Stack challenge.
 
 ## About
 
-Driven.t is a web browser application with which you can manage every single aspect of your event.
+It's an app for managing orders at an establishment that specializes in snacks.
+
+## Finding printer data
+
+ Follow the .env.example located at the source.
+
+ For WINDOWS:
+
+ Connect your USB printer to your computer. 
+
+ Open "Device Manager" by right-clicking on the Windows icon in the bottom left corner and selecting "Device Manager" from the menu.
+
+ In Device Manager, find the category "Human Interface Devices" or "Ports (COM and LPT)."
+
+ Locate your printer in the list. It may be listed as a printer or as a human interface device or even under "Ports (COM and LPT)."
+
+ Right-click on the printer and select "Properties."
+
+ Go to the "Details" tab, and from the dropdown menu, select "Hardware IDs."
+
+ You will see two lines called "VID_" (vendor ID) and "PID_" (product ID). Note down these values.
+
+ With these values in hand, you can replace 'vendorId' and 'productId' in the .env file with the correct values.
+
+VENDOR_ID=your_vendor_id
+PRODUCT_ID=your_product_id
+
+
+------
+
+
+ For LINUX or MACOS:
+
+ Connect your printer and type the following command in the terminal: lsusb
+
+ This command will list all USB devices connected to your system, including the printer.
+
+ You can look for the line corresponding to your printer to find the "vendor ID" and "product ID."
+
+VENDOR_ID=your_vendor_id
+PRODUCT_ID=your_product_id
+
+
 
 ## How to run for development
 
@@ -78,55 +118,4 @@ You can operate on databases for different environments, but it is necessary to 
 
 - `npm run dev:migration:generate -- --name ATOMIC_OPERATION_NAME` - generate and run migration and prisma client for development environment by loading envs from .env.development file. Replace `ATOMIC_OPERATION_NAME` by the name of the migration you want to generate.
 
-## Switching between environments
 
-In order to switch between development and test environments you need to shutdown the current postgres instance if it is running and start the new one.
-
-If you are in development environment:
-
-```bash
-npm run dev:postgres:down
-```
-
-And then
-
-```bash
-npm run test:postgres
-```
-
-If you are in test environment:
-
-```bash
-npm run test:postgres:down
-```
-
-And then
-
-```bash
-npm run dev:postgres
-```
-
-## Running application locally or inside docker
-
-`.env.development` and `.env.test` must be changed if you and to run the application locally or inside docker. You can populate files based on `.env.example` file, but you need to consider the following:
-
-- Running application locally (postgres and node):
-
-Add your postgres credentials and make sure to create given database before running the application.
-
-- Running application inside docker (postgres and node):
-
-Set `POSTGRES_HOST` to `drivent-postgres-development` for `.env.development` and `drivent-postgres-test` for `.env.test` file. It is the name of the postgres container inside docker-compose file. Docker Compose will start the postgres container for you, create the database and host alias for you.
-
-- Running application locally (node) but postgres is running inside docker:
-
-Set `POSTGRES_HOST` to `localhost` for `.env.development` and `localhost` for `.env.test` file. Docker compose is configured to expose postgres container to your localhost.
-
-## What to do when add new ENV VARIABLES
-
-There are several things you need to do when you add new ENV VARIABLES:
-- Add them to `.env.example` file
-- Add them to your local `.env.development` and `.env.test` files
-- Add them to your docker-compose.yml file (just the name, not the value). Only envs listed in the environment section will be exposed to your docker container.
-- Add them (prod version) to your github repo secrets. They will be used to generate the `.env` file on deploy.
-- Add them (prod version) to test.yml file on .github/workflows/test.yml.

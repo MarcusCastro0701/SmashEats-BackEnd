@@ -1,11 +1,9 @@
 import cors from 'cors';
 import express, { Express } from 'express';
+import { connectDb, disconnectDB, loadEnv } from '@/config';
+import { categoriesRouter, ordersRouter, productsRouter } from '@/routers';
 import 'express-async-errors';
 import 'reflect-metadata';
-
-import { connectDb, disconnectDB, loadEnv } from '@/config';
-
-import { categoriesRouter, ordersRouter, productsRouter } from '@/routers';
 
 loadEnv();
 
